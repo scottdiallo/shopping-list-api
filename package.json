@@ -1,0 +1,28 @@
+{
+  "name": "shopping-list",
+  "version": "0.0.1",
+  "description": "A shopping list with its own API.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dengeist/shopping-list.git"
+  },
+  "keywords": [
+    "REST",
+    "CRUD",
+    "APIs"
+  ],
+  "author": "Elias and Connie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dengeist/shopping-list/issues"
+  },
+  "homepage": "https://github.com/dengeist/shopping-list#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  }
+}
