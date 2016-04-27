@@ -60,7 +60,7 @@ app.post('/items', jsonParser, function(req, res) {
 });
 
 app.delete('/items/:id', jsonParser, function(req, res){
-    var deletedItem = storage.delete(parseInt(req.params.id));
+    var deletedItem = storage.delete(parseInt(req.params.id, 10));
     console.log(deletedItem);
     res.status(200).json(deletedItem);
 });
