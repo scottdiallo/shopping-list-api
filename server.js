@@ -17,20 +17,23 @@ Storage.prototype.add = function(name) {
     return item;
 };
 
-Storage.prototype.delete = function(name) {
-    var item = {
-        name: name,
-        id: this.id
-    };
-    var index = this.items[item.id];
-    //this.items.splice();
+Storage.prototype.delete = function(id) {
+    for(var i=0; i < this.items.length; i++) {
+        var loopId = this.items[i].id;
+        if (loopId === id) {
+            break;
+        }
+    }
+
+    this.items.splice(i, 1);
 };
 
 var storage = new Storage();
 storage.add('Broad beans');
 storage.add('Tomatoes');
 storage.add('Peppers');
-storage.delete('Peppers')
+storage.delete(0);
+console.log(storage.items);
 
 var app = express();
 app.use(express.static('public'));
