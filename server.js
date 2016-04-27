@@ -7,6 +7,15 @@ var Storage = function() {
     this.id = 0;
 };
 
+Storage.prototype.loopInItems = function(targetId) {
+    for(var i=0; i < this.items.length; i++) {
+        var loopId = this.items[i].id;
+        if (loopId === targetId) {
+            return i;
+        }
+    }
+};
+
 Storage.prototype.add = function(name) {
     var item = {
         name: name,
@@ -18,25 +27,14 @@ Storage.prototype.add = function(name) {
 };
 
 Storage.prototype.edit = function(targetId, newName) {
-    for(var i=0; i < this.items.length; i++) {
-        var loopId = this.items[i].id;
-        if (loopId === targetId) {
-            break;
-        }
+    var i = this.loopInItems(targetId);
+    if (i) {
+        this.items[i].name = newName;
     }
-    //var itemName = this.items[i].name;
-    this.items[i].name = newName;
-    console.log(this.items);
-
 };
 
 Storage.prototype.delete = function(targetId) {
-    for(var i=0; i < this.items.length; i++) {
-        var loopId = this.items[i].id;
-        if (loopId === targetId) {
-            break;
-        }
-    }
+    var i = this.loopInItems(targetId);
     var deletedItems = this.items.splice(i, 1);
     return deletedItems[0];
 };
