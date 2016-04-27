@@ -17,14 +17,17 @@ Storage.prototype.add = function(name) {
     return item;
 };
 
-Storage.prototype.edit = function(name) {
+Storage.prototype.edit = function(targetId, newName) {
     for(var i=0; i < this.items.length; i++) {
         var loopId = this.items[i].id;
         if (loopId === targetId) {
             break;
         }
     }
-    this.items.splice(i, 1);
+    //var itemName = this.items[i].name;
+    this.items[i].name = newName;
+    console.log(this.items);
+
 };
 
 Storage.prototype.delete = function(targetId) {
@@ -42,7 +45,6 @@ var storage = new Storage();
 storage.add('Broad beans');
 storage.add('Tomatoes');
 storage.add('Peppers');
-
 var app = express();
 app.use(express.static('public'));
 
@@ -59,9 +61,13 @@ app.post('/items', jsonParser, function(req, res) {
     res.status(201).json(item);
 });
 
+app.put('/items/:id', jsonParser, function(req, res){
+    var item = storage.edit(req.body.id, req.body.name);
+    res.status(200).json(item);
+});
+
 app.delete('/items/:id', jsonParser, function(req, res){
     var deletedItem = storage.delete(parseInt(req.params.id, 10));
-    console.log(deletedItem);
     res.status(200).json(deletedItem);
 });
 
