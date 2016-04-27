@@ -28,16 +28,13 @@ Storage.prototype.edit = function(name) {
 };
 
 Storage.prototype.delete = function(targetId) {
-    console.log(targetId, this.items);
     for(var i=0; i < this.items.length; i++) {
         var loopId = this.items[i].id;
         if (loopId === targetId) {
             break;
         }
     }
-    console.log(i);
     var deletedItems = this.items.splice(i, 1);
-    console.log(this.items);
     return deletedItems[0];
 };
 
