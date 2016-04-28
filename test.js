@@ -36,10 +36,7 @@ describe('Shopping List', function() {
                 should.equal(err, null);
                 res.should.have.status(200);
                 res.should.be.json;
-                // res.should.be.equal('Tomatoes');
-                console.log('Response!!!!');
-                console.log(res.body);
-                res.body[1].should.have.property('id');
+                res.body.name.should.be.equal('Tomatoes');
                 done();
             });
     });

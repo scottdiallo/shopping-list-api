@@ -43,12 +43,15 @@ var storage = new Storage();
 storage.add('Broad beans');
 storage.add('Tomatoes');
 storage.add('Peppers');
+
+console.log(storage.loopInItems(1));
 var app = express();
 app.use(express.static('public'));
 
 app.get('/items', function(req, res) {
     res.json(storage.items);
 });
+
 app.get('/items/:id', function(req, res) {
     // var item = storage.items.map(function(item) {
     //     //parseInt(req.params.id);
@@ -57,17 +60,11 @@ app.get('/items/:id', function(req, res) {
     //     }
     // })[0];
 
-    var item = storage.items[1];
+    var index = storage.loopInItems(parseInt(req.params.id));
+    res.json(storage.items[index]);
 
-    // for(var i=0; i < storage.items.length; i++) {
-    //     var item = storage.items[i];
-    //     if (loopId === targetId) {
-    //         return i;
-    //     }
-    // }
-
-    res.json(item);
-    res.status(200);
+    // res.json(item);
+    // res.status(200);
 });
 
 app.post('/items', jsonParser, function(req, res) {
