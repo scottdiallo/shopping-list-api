@@ -49,6 +49,26 @@ app.use(express.static('public'));
 app.get('/items', function(req, res) {
     res.json(storage.items);
 });
+app.get('/items/:id', function(req, res) {
+    // var item = storage.items.map(function(item) {
+    //     //parseInt(req.params.id);
+    //     if (item.id === parseInt(req.params.id)) {
+    //         return item;
+    //     }
+    // })[0];
+
+    var item = storage.items[1];
+
+    // for(var i=0; i < storage.items.length; i++) {
+    //     var item = storage.items[i];
+    //     if (loopId === targetId) {
+    //         return i;
+    //     }
+    // }
+
+    res.json(item);
+    res.status(200);
+});
 
 app.post('/items', jsonParser, function(req, res) {
     if (!req.body) {

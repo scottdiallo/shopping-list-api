@@ -29,6 +29,20 @@ describe('Shopping List', function() {
     			done();
     		});
     });
+    it('should list a items on get', function(done) {
+        chai.request(app)
+            .get('/items/' + 1)
+            .end(function(err, res) {
+                should.equal(err, null);
+                res.should.have.status(200);
+                res.should.be.json;
+                // res.should.be.equal('Tomatoes');
+                console.log('Response!!!!');
+                console.log(res.body);
+                res.body[1].should.have.property('id');
+                done();
+            });
+    });
     it('should add an item on POST', function(done) {
         chai.request(app)
             .post('/items')
