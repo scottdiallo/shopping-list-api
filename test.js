@@ -62,17 +62,42 @@ describe('Shopping List', function() {
     		.end(function(err, res) {
     			should.equal(err, null);
                 res.should.have.status(200);
+                res.should.be.json;
                 storage.items[1].name.should.be.a('string');
                 storage.items[1].name.should.equal('Apples');
                 storage.items[1].should.be.a('object');
                 storage.items[1].should.have.property('id');
-                storage.items.should.have.length(3);
+                storage.items.should.have.length(4);
     			done();
     		});
 
     });
+    it('should delete an item on delete', function(done) {
+    	chai.request(app)
+    		.delete('/items/' + 2)
+    		.end(function(err, res) {
+    			should.equal(err, null);
+    			res.should.have.status(200);
+    			res.should.be.json;
+    			storage.items[2].name.should.be.equal('Kale');
+    			storage.items[0].name.should.be.equal('Broad beans');
+    			storage.items.should.have.length(3);
+    			done();
 
-
-
-    it('should delete an item on delete');
+    		});
+    });
+    it('should delete an item on delete', function(done) {
+    	chai.request(app)
+    		.delete('/items/' + 1)
+    		.end(function(err, res) {
+    			should.equal(err, null);
+    			res.should.have.status(200);
+    			res.should.be.json;
+    			storage.items[1].name.should.be.equal('Kale');
+    			storage.items[1].should.have.property('id');
+    			storage.items[1].id.should.not.be.equal("");
+    			storage.items.should.have.length(2);
+    			done();
+    		});
+    });
 });
