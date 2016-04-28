@@ -53,18 +53,8 @@ app.get('/items', function(req, res) {
 });
 
 app.get('/items/:id', function(req, res) {
-    // var item = storage.items.map(function(item) {
-    //     //parseInt(req.params.id);
-    //     if (item.id === parseInt(req.params.id)) {
-    //         return item;
-    //     }
-    // })[0];
-
     var index = storage.loopInItems(parseInt(req.params.id));
     res.json(storage.items[index]);
-
-    // res.json(item);
-    // res.status(200);
 });
 
 app.post('/items', jsonParser, function(req, res) {
