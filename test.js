@@ -61,9 +61,14 @@ describe('Shopping List', function() {
     		.send(itemEdit)
     		.end(function(err, res) {
     			should.equal(err, null);
+                res.should.have.status(200);
+                storage.items[1].name.should.be.a('string');
+                storage.items[1].name.should.equal('Apples');
+                storage.items[1].should.be.a('object');
+                storage.items[1].should.have.property('id');
+                storage.items.should.have.length(3);
     			done();
     		});
-
 
     });
 
