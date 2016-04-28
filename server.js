@@ -60,7 +60,7 @@ app.post('/items', jsonParser, function(req, res) {
 });
 
 app.put('/items/:id', jsonParser, function(req, res){
-    var item = storage.edit(req.body.id, req.body.name);
+    var item = storage.edit(parseInt(req.params.id), req.body.name);
     res.status(200).json(item);
 });
 
