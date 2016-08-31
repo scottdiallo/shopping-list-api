@@ -1,32 +1,32 @@
 {
-  "name": "shopping-list",
-  "version": "0.0.1",
-  "description": "A shopping list with its own API.",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": " https://github.com/scottdiallo/shopping-list-api.git"
-  },
-  "keywords": [
+    "name": "shopping-list",
+    "version": "0.0.1",
+    "description": "A shopping list with its own API.",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": " https://github.com/scottdiallo/shopping-list-api.git"
+    },
+    "keywords": [
     "REST",
     "CRUD",
     "APIs"
   ],
-  "author": "Elias and Connie",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dengeist/shopping-list/issues"
-  },
-  "homepage": "https://github.com/dengeist/shopping-list#readme",
-  "dependencies": {
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-http": "^2.0.1"
-  }
+    "author": "Elias, Scott and Connie",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/scottdiallo/shopping-list-api/issues"
+    },
+    "homepage": "https://github.com/scottdiallo/shopping-list-api#readme",
+    "dependencies": {
+        "body-parser": "^1.15.0",
+        "express": "^4.13.4"
+    },
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "chai-http": "^2.0.1"
+    }
 }
